@@ -17,7 +17,27 @@ import CustomDrawer from '../components/CustomDrawer';
 
 //icons
 import { AntDesign, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-
+import {
+    useFonts,
+    Montserrat_100Thin,
+    Montserrat_200ExtraLight,
+    Montserrat_300Light,
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold,
+    Montserrat_800ExtraBold,
+    Montserrat_900Black,
+    Montserrat_100Thin_Italic,
+    Montserrat_200ExtraLight_Italic,
+    Montserrat_300Light_Italic,
+    Montserrat_400Regular_Italic,
+    Montserrat_500Medium_Italic,
+    Montserrat_600SemiBold_Italic,
+    Montserrat_700Bold_Italic,
+    Montserrat_800ExtraBold_Italic,
+    Montserrat_900Black_Italic,
+} from '@expo-google-fonts/montserrat';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +51,7 @@ function HomeScreen({ navigation }) {
 
 function ContactScreen({ navigation }) {
     return (
-        <LinearGradient colors={['#0cc898', '#1797d2']} style={styles.container}>
+        <LinearGradient colors={['#34a0a4', '#168aad', '#184e77']} style={styles.container}>
             <Contact />
         </LinearGradient>
     );
@@ -63,19 +83,24 @@ function ResumeScreen({ navigation }) {
 export default function MainNavigation() {
     return (
         <Drawer.Navigator initialRouteName="Home"
-        screenOptions={{
-            headerStyle: {
-                backgroundColor: '#013a63',
-            },
-            headerTintColor: '#fff',
-            drawerLabelStyle:{
-                marginLeft:-25,
-                fontSize:15
-            },
-            drawerActiveTintColor:'#fff',
-            drawerInactiveTintColor:'#013a63',
-            drawerActiveBackgroundColor:"#013a63"
-        }}
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#006396',
+                },
+                headerTitleStyle: {
+                    fontFamily: 'Montserrat_500Medium'
+                },
+                headerTintColor: '#fff',
+                drawerLabelStyle: {
+                    marginLeft: -25,
+                    fontSize: 15,
+                    fontFamily: 'Montserrat_400Regular'
+                },
+
+                drawerActiveTintColor: '#fff',
+                drawerInactiveTintColor: '#013a63',
+                drawerActiveBackgroundColor: "#006396"
+            }}
             drawerContent={props => <CustomDrawer {...props} />}
         >
             <Drawer.Screen name="Accueil" component={HomeScreen} options={{
