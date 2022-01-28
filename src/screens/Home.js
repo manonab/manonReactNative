@@ -46,10 +46,10 @@ export default function Home({ navigation }) {
                         <Text style={styles.title}>Sites web</Text>
                         <View style={styles.allCircle}>
                             <View style={styles.circle}>
-                                <Image source={require('../../assets/lanvestCapture.png')} style={styles.img} />
+                                <Image source={require('../../assets/lanvest.png')} style={styles.img} />
                             </View>
                             <View style={styles.circle}>
-                                <Image source={require('../../assets/geneakaCapture.png')} style={styles.img} />
+                                <Image source={require('../../assets/geneakaLogo.png')} style={styles.img} />
                             </View>
                         </View>
                         <View style={styles.appTitles}>
@@ -59,10 +59,10 @@ export default function Home({ navigation }) {
                         <Text style={styles.title}>Applications</Text>
                         <View style={styles.allCircle}>
                             <View style={styles.circle}>
-                                <Image source={require('../../assets/mySeenCapture.jpg')} style={styles.img} />
+                                <Image source={require('../../assets/mySeenCapture.png')} style={styles.img} />
                             </View>
                             <View style={styles.circle}>
-                                <Image source={{ uri: `https://www.gastronomiac.com/wp/wp-content/uploads/2019/02/lapin.jpg` }} style={styles.img} />
+                                <Image source={require('../../assets/BunnyFinder.png')} style={styles.img} />
                             </View>
                         </View>
                         <View style={styles.appTitles}>
@@ -107,8 +107,15 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: 35,
         color: "#fff",
-        fontFamily:'MontserratBold',
-        marginVertical: 20
+        textTransform:"uppercase",
+        fontFamily:'MontserratLight',
+        marginVertical: 20,
+        textShadowColor: '#000',
+        textShadowOffset: {
+            width: 1,
+            height: 0
+        },
+        textShadowRadius: 15
     },
     insideText: {
         color: "#fff",
@@ -138,9 +145,9 @@ const styles = StyleSheet.create({
         fontFamily:'MontserratLight',
     },
     img: {
-        width: 130,
-        height: 130,
-        borderRadius: 10,
+        width: 170,
+        height: 150,
+        resizeMode:"cover"
     },
     project:{
         fontSize:17,

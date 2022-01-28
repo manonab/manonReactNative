@@ -1,9 +1,10 @@
-import * as React from 'react';
+import React, { useState, useRef,useCallback } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 import Home from "../screens/Home";
 import Projects from "../screens/Projects";
 import Contact from "../screens/Contact";
@@ -17,35 +18,19 @@ import CustomDrawer from '../components/CustomDrawer';
 
 //icons
 import { AntDesign, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-import {
-    useFonts,
-    Montserrat_100Thin,
-    Montserrat_200ExtraLight,
-    Montserrat_300Light,
-    Montserrat_400Regular,
-    Montserrat_500Medium,
-    Montserrat_600SemiBold,
-    Montserrat_700Bold,
-    Montserrat_800ExtraBold,
-    Montserrat_900Black,
-    Montserrat_100Thin_Italic,
-    Montserrat_200ExtraLight_Italic,
-    Montserrat_300Light_Italic,
-    Montserrat_400Regular_Italic,
-    Montserrat_500Medium_Italic,
-    Montserrat_600SemiBold_Italic,
-    Montserrat_700Bold_Italic,
-    Montserrat_800ExtraBold_Italic,
-    Montserrat_900Black_Italic,
-} from '@expo-google-fonts/montserrat';
+
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 function HomeScreen({ navigation }) {
     return (
-        <>
-            <Home />
-        </>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Project" component={Projects} />
+        </Stack.Navigator>
     );
 };
 
@@ -74,13 +59,29 @@ function ProjetScreen({ navigation }) {
 
 function ResumeScreen({ navigation }) {
     return (
-        <LinearGradient colors={['#0cc898', '#1797d2']} style={styles.container}>
-            <Resume />
-        </LinearGradient>
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false
+            }}>
+            <Stack.Screen name="Resume" component={Resume} />
+            <Stack.Screen name="MySeen" component={MySeen} />
+        </Stack.Navigator>
     );
 };
 
 export default function MainNavigation() {
+    const [loaded] = useFonts({
+        MontserratBold: require('../../assets/fonts/Montserrat-Bold.ttf'),
+        MontserratMedium: require('../../assets/fonts/Montserrat-Medium.ttf'),
+        MontserratLight: require('../../assets/fonts/Montserrat-Light.ttf'),
+        MontserratLightItalic: require('../../assets/fonts/Montserrat-LightItalic.ttf'),
+    });
+
+    if (!loaded) {
+        return (
+            <AppLoading />
+        )
+    }
     return (
         <Drawer.Navigator initialRouteName="Home"
             screenOptions={{
@@ -88,13 +89,13 @@ export default function MainNavigation() {
                     backgroundColor: '#006396',
                 },
                 headerTitleStyle: {
-                    fontFamily: 'Montserrat_500Medium'
+                    fontFamily: 'MontserratMedium'
                 },
                 headerTintColor: '#fff',
                 drawerLabelStyle: {
                     marginLeft: -25,
                     fontSize: 15,
-                    fontFamily: 'Montserrat_400Regular'
+                    fontFamily: 'MontserratLight'
                 },
 
                 drawerActiveTintColor: '#fff',
