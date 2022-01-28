@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Linking, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { AntDesign, Entypo, Ionicons, FontAwesome } from '@expo/vector-icons';
 import { TextInput } from 'react-native-paper';
 import { useFonts } from 'expo-font';
@@ -7,13 +7,24 @@ import AppLoading from 'expo-app-loading';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 
+const linkedIn = "https://www.linkedin.com/authwall?trk=gf&trkInfo=AQFuIJmfLkAABQAAAX6hpKzYrqzEWw13Olp4ThhCHwVpsdTVlBlYsMMTqo4L1nFD-BGgtCRO-kc4pv5YaLeysR9h1CSQiKqO4AzmO-Fpj-7zClcLjARCiBcV6nDJ8D5-nGp2psk=&originalReferer=http://localhost:3000/&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmanon-abel-coindoz-b6449211a%2F";
+const number = "+33 620235734";
+const email = "abelcoindozm@gmail.com";
+
 const Contact = () => {
 
     const [name, setName] = useState('');
     const [company, setCompany] = useState('');
     const [content, setContent] = useState('');
     const [email, setEmail] = useState('');
-
+    const openUrl = async (url) => {
+        const isSupported = await Linking.canOpenURL(url);
+        if (isSupported) {
+            await Linking.openURL(url);
+        } else {
+            Alert('Do not know this url')
+        }
+    };
     const [loaded] = useFonts({
         MontserratBold: require('../../assets/fonts/Montserrat-Bold.ttf'),
         MontserratMedium: require('../../assets/fonts/Montserrat-Medium.ttf'),
@@ -27,8 +38,9 @@ const Contact = () => {
                 content,
                 email
             })
-            .then(() => alert('bien joué !'))
-        } catch (err) { console.log(err) 
+                .then(() => alert('bien joué !'))
+        } catch (err) {
+            console.log(err)
         }
     };
     if (!loaded) {
@@ -45,10 +57,20 @@ const Contact = () => {
                     <View style={styles.intro}>
                         <Text style={styles.introText}>Pour me contacter: </Text>
                         <View style={styles.icons}>
-                            <Entypo name="linkedin" size={26} color="#006396" />
-                            <Ionicons name="mail" size={26} color="#006396" />
+                            <TouchableOpacity onPress={() => openUrl(linkedIn)}>
+                                <Entypo name="linkedin" size={26} color="#006396" />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                Linking.openURL(`mailto:abelcoindozm@gmail.com`)
+                            }}>
+                                <Ionicons name="mail" size={26} color="#006396" />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                Linking.openURL(`tel:${number}`)
+                            }}>
                             <FontAwesome name="phone" size={26} color="#006396" />
-                        </View>
+                            </TouchableOpacity>                       
+                            </View>
                     </View>
                     <View style={styles.form}>
                         <Text style={styles.title}>Votre nom</Text>
@@ -74,6 +96,7 @@ const Contact = () => {
                             value={content} onChangeText={(text) => setName(text)}
                             onChangeText={(text) => setContent(text)}
                             mode="outlined"
+                            multiline
                             theme={{ colors: { primary: "#168aad" } }}
                             style={styles.input}
                             label={"Votre message"}
