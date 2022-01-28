@@ -15,27 +15,16 @@ export default function Project({ navigation }) {
                             <Image source={require('../../assets/lanvest.png')} style={styles.imgLanvest} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.circle} onPress={() => navigation.navigate('Geneaka')}>
-                            <Image source={require('../../assets/geneakaLogo.png')} style={styles.img} />
+                            <Image source={require('../../assets/geneakaLogo.png')} style={styles.imgLanvest}/>
                         </TouchableOpacity>
-                    </View>
-                    {/* <View style={styles.appTitles}>
-                        <Text style={styles.smallText}>Lanvest</Text>
-                        <Text style={styles.smallText}>Geneaka</Text>
-                    </View> */}
                     <Text style={styles.title}>Applications</Text>
-                    <View style={styles.allCircle}>
                         <TouchableOpacity style={styles.circle} onPress={() => navigation.navigate('MySeen')}>
-                            <Image source={require('../../assets/mySeenCapture.png')} style={styles.imgMySeen} />
+                            <Image source={require('../../assets/mySeenCapture.png')} style={styles.imgLanvest}/>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.circle} onPress={() => navigation.navigate('BunnyFinder')}>
-                            <Image source={{ uri: `https://www.gastronomiac.com/wp/wp-content/uploads/2019/02/lapin.jpg` }} style={styles.img} />
+                        <Image source={require('../../assets/BunnyFinder.png')} style={styles.imgLanvest}/>
                         </TouchableOpacity>
                     </View>
-                    {/* <View style={styles.appTitles}>
-                        <Text style={styles.smallText}>My S.E.E.N</Text>
-                        <Text style={styles.smallText}>Bunny Finder</Text>
-                    </View> */}
-
                 </View>
             </LinearGradient>
             </ScrollView>  
@@ -55,10 +44,7 @@ const styles = StyleSheet.create({
     allCircle: {
         width: "100%",
         flexDirection: "column",
-    },
-    circle: {
-        margin: 5,
-        shadowColor:'#000'
+        justifyContent:"space-between"
     },
     appTitles: {
         flexDirection: "row",
@@ -72,18 +58,20 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat_200ExtraLight',
     },
     img: {
-        width: "100%",
-        height: 110,
-        margin: 5,
+        resizeMode:"contain",
+        width: "65%",
         alignSelf:"center"
     },
     imgMySeen:{
-        width: "100%",
-        height: 200
+        resizeMode:"contain",
+        width: "65%",
+        alignSelf:"center"
+
     },
     imgLanvest:{
-        width:"90%",
+        width:"100%",
         alignSelf:"center",
-        height: 80
+        resizeMode:"contain",
+        height: 150
     }
 });

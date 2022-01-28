@@ -2,52 +2,22 @@ import * as React from 'react';
 import { View, StyleSheet, Text, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from "expo-linear-gradient";
-import {useFonts,
-    Montserrat_100Thin,
-    Montserrat_200ExtraLight,
-    Montserrat_300Light,
-    Montserrat_400Regular,
-    Montserrat_500Medium,
-    Montserrat_600SemiBold,
-    Montserrat_700Bold,
-    Montserrat_800ExtraBold,
-    Montserrat_900Black,
-    Montserrat_100Thin_Italic,
-    Montserrat_200ExtraLight_Italic,
-    Montserrat_300Light_Italic,
-    Montserrat_400Regular_Italic,
-    Montserrat_500Medium_Italic,
-    Montserrat_600SemiBold_Italic,
-    Montserrat_700Bold_Italic,
-    Montserrat_800ExtraBold_Italic,
-    Montserrat_900Black_Italic,
-} from '@expo-google-fonts/montserrat';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 
 export default function Home({ navigation }) {
-    let [fontsLoaded] = useFonts({
-        Montserrat_100Thin,
-        Montserrat_100Thin_Italic,
-        Montserrat_200ExtraLight,
-        Montserrat_200ExtraLight_Italic,
-        Montserrat_300Light,
-        Montserrat_300Light_Italic,
-        Montserrat_400Regular,
-        Montserrat_400Regular_Italic,
-        Montserrat_500Medium,
-        Montserrat_500Medium_Italic,
-        Montserrat_600SemiBold,
-        Montserrat_600SemiBold_Italic,
-        Montserrat_700Bold,
-        Montserrat_700Bold_Italic,
-        Montserrat_800ExtraBold,
-        Montserrat_800ExtraBold_Italic,
-        Montserrat_900Black,
-        Montserrat_900Black_Italic,
-    });
-    let fontSize = 24;
-    let paddingVertical = 6;
 
+    const [loaded] = useFonts({
+        MontserratBold: require('../../assets/fonts/Montserrat-Bold.ttf'),
+        MontserratMedium: require('../../assets/fonts/Montserrat-Medium.ttf'),
+        MontserratLight: require('../../assets/fonts/Montserrat-Light.ttf'),
+    })   
+    if (!loaded) {
+        return (
+            <AppLoading />
+        )
+    }
         return (
             <SafeAreaView>
                 <LinearGradient colors={['#34a0a4', '#168aad', '#184e77']}>
@@ -125,19 +95,19 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         fontWeight: '100',
         color: "#fff",
-        fontFamily:'Montserrat_800ExtraBold'
+        fontFamily:'MontserratMedium'
     },
     smallTitle: {
         color: "#fff",
         padding: 1,
         fontSize:15,
-        fontFamily:'Montserrat_300Light'
+        fontFamily:'MontserratLight'
     },
     title: {
         textAlign: "center",
         fontSize: 35,
         color: "#fff",
-        fontFamily: 'Montserrat_500Medium',
+        fontFamily:'MontserratBold',
         marginVertical: 20
     },
     insideText: {
@@ -145,7 +115,7 @@ const styles = StyleSheet.create({
         padding: 8,
         letterSpacing: 0.2,
         fontSize: 16,
-        fontFamily:'Montserrat_300Light'
+        fontFamily:'MontserratLight'
     },
     allCircle: {
         width: "100%",
@@ -165,7 +135,7 @@ const styles = StyleSheet.create({
     smallText: {
         color: "#fff",
         fontSize: 18,
-        fontFamily:'Montserrat_200ExtraLight',
+        fontFamily:'MontserratLight',
     },
     img: {
         width: 130,
@@ -176,7 +146,7 @@ const styles = StyleSheet.create({
         fontSize:17,
         margin: 5,
         color: '#fff',
-        fontFamily:'Montserrat_300Light'
+        fontFamily:'MontserratLight'
     },
     button:{
         backgroundColor:'#168aad',
