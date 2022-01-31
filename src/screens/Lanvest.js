@@ -88,6 +88,7 @@ const Lanvest = ({ navigation }) => {
                             {mediaPart &&
                                 <View style={styles.part}>
                                     <Video
+                                        
                                         ref={video}
                                         style={styles.video}
                                         source={require('../../assets/lanvestVideo.mp4')}

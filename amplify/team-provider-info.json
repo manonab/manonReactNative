@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-manonapprn-dev-140959-authRole",
+      "UnauthRoleArn": "arn:aws:iam::648386507103:role/amplify-manonapprn-dev-140959-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::648386507103:role/amplify-manonapprn-dev-140959-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-manonapprn-dev-140959-deployment",
+      "UnauthRoleName": "amplify-manonapprn-dev-140959-unauthRole",
+      "StackName": "amplify-manonapprn-dev-140959",
+      "StackId": "arn:aws:cloudformation:eu-west-3:648386507103:stack/amplify-manonapprn-dev-140959/1a54cb40-8297-11ec-88df-0a47d4be1c5a",
+      "AmplifyAppId": "d1uymqp24np0rd"
+    }
+  }
+}
