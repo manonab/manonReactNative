@@ -1,19 +1,25 @@
 {
-  "api": {
-    "manonapprn": {
-      "service": "AppSync",
+  "function": {
+    "myAppApiFunction": {
+      "build": true,
       "providerPlugin": "awscloudformation",
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            }
-          },
-          "additionalAuthenticationProviders": []
+      "service": "Lambda"
+    }
+  },
+  "api": {
+    "myApp": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "myAppApiFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
         }
-      }
+      ]
     }
   }
 }

@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
-
+import Amplify, { API } from 'aws-amplify';
 const linkedIn = "https://www.linkedin.com/authwall?trk=gf&trkInfo=AQFuIJmfLkAABQAAAX6hpKzYrqzEWw13Olp4ThhCHwVpsdTVlBlYsMMTqo4L1nFD-BGgtCRO-kc4pv5YaLeysR9h1CSQiKqO4AzmO-Fpj-7zClcLjARCiBcV6nDJ8D5-nGp2psk=&originalReferer=http://localhost:3000/&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fmanon-abel-coindoz-b6449211a%2F";
 const number = "+33 620235734";
 const email = "abelcoindozm@gmail.com";
@@ -17,6 +17,7 @@ const Contact = () => {
     const [company, setCompany] = useState('');
     const [content, setContent] = useState('');
     const [email, setEmail] = useState('');
+
     const openUrl = async (url) => {
         const isSupported = await Linking.canOpenURL(url);
         if (isSupported) {
@@ -31,18 +32,11 @@ const Contact = () => {
         MontserratLight: require('../../assets/fonts/Montserrat-Light.ttf'),
     })
     const sendForm = async () => {
-        try {
-            await axios.post('http://10.0.2.2:4000/post_name', {
-                name,
-                company,
-                content,
-                email
-            })
-                .then(() => alert('bien joué !'))
-        } catch (err) {
-            console.log(err)
-        }
-    };
+        API
+        .get("myApp",'/manonApp', )
+        .then(() => console.log("response"))
+        .catch((err) => console.log(err))
+        };
     if (!loaded) {
         return (
             <AppLoading />
