@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/manonApp": {
+      "name": "/manonApp",
+      "lambdaFunction": "myAppApiFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
